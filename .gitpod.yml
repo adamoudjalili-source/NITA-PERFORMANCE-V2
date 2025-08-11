@@ -1,0 +1,15 @@
+# .gitpod.yml
+image: maven:3.9-eclipse-temurin-21
+tasks:
+  - name: Build
+    init: mvn -q -DskipTests package
+    command: mvn -q spring-boot:run -Dspring-boot.run.profiles=dev
+ports:
+  - port: 8080
+    onOpen: open-preview
+    visibility: public
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
